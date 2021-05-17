@@ -25,6 +25,7 @@ gitlab-runner register --non-interactive \
   --registration-token $REGISTRATION_TOKEN \
   --executor docker \
   --tag-list docker \
+  --debug \
   --docker-image "docker:stable"
 
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
