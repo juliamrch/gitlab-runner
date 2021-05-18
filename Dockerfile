@@ -6,7 +6,8 @@ RUN chmod +x go.sh
 ENV PATH="${PATH}:/usr/local/bin"
 
 # Install nodejs
-RUN curl -sL https://rpm.nodesource.com/setup_current.x | bash  && \
-    yum -y install nodejs jq && \
+RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
+    apt-get -y iupdate && \
+    apt-get -y install nodejs jq && \
     echo "👋 🦊 Runner is installed" 
 CMD [ "/go.sh" ]
