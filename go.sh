@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the id of old runners (if exists)
-json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
+json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/groups/benevolt/runners")
 
 for row in $(echo "${json}" | jq -r '.[] | @base64'); do
     _jq() {
