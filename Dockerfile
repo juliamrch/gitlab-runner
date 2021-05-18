@@ -1,5 +1,5 @@
 # Runner for a nodejs project
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 COPY go.sh go.sh
 RUN chmod +x go.sh
@@ -11,7 +11,7 @@ RUN apt-get update && \
     apt-get install -y curl && \
     curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | bash  && \
     apt-get install -y gitlab-runner=13.0.2 && \
-    curl -sL https://deb.nodesource.com/setup_9.x | bash  && \
+    curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y install nodejs jq && \
     echo "👋 🦊 Runner is installed" 
 CMD [ "/go.sh" ]
