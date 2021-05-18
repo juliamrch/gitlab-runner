@@ -9,5 +9,7 @@ ENV PATH="${PATH}:/usr/local/bin"
 RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y update && \
     apt-get -y install nodejs jq && \
+    pwd && \
+    ls && \
     echo "👋 🦊 Runner is installed" 
-CMD ["ls"]
+CMD /etc/gitlab-runner/go.sh
