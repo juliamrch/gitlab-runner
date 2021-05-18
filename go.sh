@@ -47,9 +47,7 @@ gitlab-runner register --non-interactive \
 
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
 
-gitlab-runner run \
-     -v /srv/gitlab-runner/config:/etc/gitlab-runner \
-     -v /var/run/docker.sock:/var/run/docker.sock
+gitlab-runner run
 
 echo "🌍 executing the http server"
 python3 -m http.server 8080
