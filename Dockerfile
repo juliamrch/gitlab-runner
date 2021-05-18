@@ -7,11 +7,11 @@ RUN chmod +x go.sh
 ENV PATH="${PATH}:/usr/local/bin"
 
 # Install gitlab-runner and nodejs
-RUN apt-get update && \
-    apt-get install -y curl && \
+RUN yum update && \
+    yum install -y curl && \
     curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | bash  && \
-    apt-get install -y gitlab-runner=13.1.0 && \
+    yum install -y gitlab-runner=13.1.0 && \
     curl -sL https://rpm.nodesource.com/setup_current.x | bash  && \
-    apt-get -y install nodejs jq && \
+    yum -y install nodejs jq && \
     echo "👋 🦊 Runner is installed" 
 CMD [ "/go.sh" ]
