@@ -1,7 +1,7 @@
 FROM gitlab/gitlab-runner:latest
 
-ADD go.sh /etc/gitlab-runner/go.sh
-RUN chmod +x /etc/gitlab-runner/go.sh
+ADD go.sh go.sh
+RUN chmod +x go.sh
 
 ENV PATH="${PATH}:/usr/local/bin"
 
@@ -10,6 +10,6 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y update && \
     apt-get -y install nodejs jq && \
     pwd && \
-    ls && \
+    ls bin && \
     echo "👋 🦊 Runner is installed" 
-CMD /etc/gitlab-runner/go.sh
+CMD go.sh
