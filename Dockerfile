@@ -10,4 +10,4 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y update && \
     apt-get -y install nodejs jq && \
     echo "👋 🦊 Runner is installed" 
-CMD /etc/gitlab-runner/go.sh
+CMD ["/etc/gitlab-runner/go.sh"]
