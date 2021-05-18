@@ -12,4 +12,4 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     pwd && \
     ls bin && \
     echo "👋 🦊 Runner is installed" 
-CMD ["/go.sh"]
+CMD [ "go.sh" ]
