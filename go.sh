@@ -2,8 +2,6 @@
 
 # Get the id of old runners (if exists)
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/groups/benevolt/runners")
-echo "👋 response "
-echo $json
 
 for row in $(echo "${json}" | jq -r '.[] | @base64'); do
     _jq() {
@@ -21,9 +19,6 @@ done
 # Register, then run the new runner
 echo "👋 launching new gitlab-runner"
 
-echo $RUNNER_NAME
-echo $REGISTRATION_TOKEN
-
 gitlab-runner register --non-interactive \
   --url "$GITLAB_INSTANCE/" \
   --name $RUNNER_NAME \
@@ -33,3 +28,10 @@ gitlab-runner register --non-interactive \
   --docker-image "docker:stable"
 
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
+
+gitlab-runner  --restart always \
+     -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+     -v /var/run/docker.sock:/var/run/docker.sock
+
+echo "🌍 executing the http server"
+python3 -m http.server 8080
