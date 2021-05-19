@@ -47,6 +47,8 @@ gitlab-runner register --non-interactive \
 
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
 
+cat /etc/gitlab-runner/config.toml
+
 gitlab-runner run &
 
 echo "🌍 executing the http server"
