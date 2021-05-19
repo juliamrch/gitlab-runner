@@ -38,12 +38,16 @@ done
 echo "👋 launching new gitlab-runner"
 
 gitlab-runner register --non-interactive \
+  --non-interactive \
+  --executor "docker" \
+  --docker-image alpine:latest \
   --url "$GITLAB_INSTANCE/" \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
-  --executor docker \
-  --tag-list docker \
-  --docker-image "docker:stable"
+  --tag-list "docker" \
+  --run-untagged="true" \
+  --locked="false" \
+  --access-level="not_protected"
 
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
 
