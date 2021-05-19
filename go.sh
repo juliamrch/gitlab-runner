@@ -1,5 +1,9 @@
 #!/bin/bash
 
+######
+# From https://gitlab.com/gitlab-org/gitlab-runner/-/blob/master/dockerfiles/runner/ubuntu/entrypoint
+######
+
 # gitlab-runner data directory
 DATA_DIR="/etc/gitlab-runner"
 CONFIG_FILE=${CONFIG_FILE:-$DATA_DIR/config.toml}
@@ -18,8 +22,13 @@ if [ -f "${CA_CERTIFICATES_PATH}" ]; then
   cmp --silent "${CA_CERTIFICATES_PATH}" "${LOCAL_CA_PATH}" || update_ca
 fi
 
+######
+# end
+######
+
+
 # Get the id of old runners (if exists)
-json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/groups/benevolt/runners")
+json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/groups/$GITLAB_GROUP/runners")
 
 for row in $(echo "${json}" | jq -r '.[] | @base64'); do
     _jq() {
