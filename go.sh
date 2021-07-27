@@ -50,6 +50,7 @@ gitlab-runner register \
   --non-interactive \
   --executor "docker" \
   --docker-image alpine:latest \
+  --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
   --url "$GITLAB_INSTANCE/" \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
