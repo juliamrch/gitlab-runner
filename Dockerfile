@@ -1,4 +1,5 @@
-FROM gitlab/gitlab-runner:v13.4.0
+FROM gitlab/gitlab-runner:v13.0.1
+# Doesn't work after v13.0.1
 
 COPY go.sh /
 RUN chmod +x /go.sh
