@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner:v13.1.1
+FROM gitlab/gitlab-runner:v13.0.1
 
 COPY go.sh /
 RUN chmod +x /go.sh
