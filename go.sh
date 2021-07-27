@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ######
-# From https://gitlab.com/gitlab-org/gitlab-runner/-/blob/master/dockerfiles/runner/ubuntu/entrypoint
+# From https://gitlab.com/gitlab-org/gitlab-runner/-/blob/main/dockerfiles/runner/ubuntu/entrypoint
 ######
 
 # gitlab-runner data directory
@@ -46,7 +46,7 @@ done
 # Register, then run the new runner
 echo "👋 launching new gitlab-runner"
 
-gitlab-runner register --non-interactive \
+gitlab-runner register \
   --non-interactive \
   --executor "docker" \
   --docker-image alpine:latest \
