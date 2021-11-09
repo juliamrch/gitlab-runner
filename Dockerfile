@@ -1,4 +1,4 @@
-FROM gitlab/gitlab-runner:v13.0.1
+FROM gitlab/gitlab-runner:v14.4.0
 # Doesn't work after v13.0.1
 
 COPY go.sh /
