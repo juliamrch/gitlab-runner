@@ -31,6 +31,7 @@ fi
 echo "Handle old runners..."
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
 
+echo "json"
 echo "$json";
 
 for row in $(echo "${json}" | jq -r '.[] | @base64'); do
