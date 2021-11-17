@@ -28,6 +28,7 @@ fi
 
 
 # Get the id of old runners (if exists)
+echo "Handle old runners..."
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
 
 for row in $(echo "${json}" | jq -r '.[] | @base64'); do
@@ -39,7 +40,7 @@ for row in $(echo "${json}" | jq -r '.[] | @base64'); do
     then
       echo "👋 old runner $RUNNER_NAME runner is: $(_jq '.id')"
       echo "⚠️ trying to deactivate runner..."
-      curl --request DELETE --header   "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN"   "$GITLAB_INSTANCE/api/v4/runners/$(_jq '.id')"
+      curl --request DELETE --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners/$(_jq '.id')"
     fi
 done
 
