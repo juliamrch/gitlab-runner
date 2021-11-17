@@ -36,7 +36,7 @@ for row in $(echo "${json}" | jq -r '.[] | @base64'); do
      echo ${row} | base64 --decode | jq -r ${1}
     }
 
-    if [ $(_jq '.description') == $RUNNER_NAME ]
+    if [[ $(_jq '.description') == $RUNNER_NAME ]]
     then
       echo "👋 old runner $RUNNER_NAME runner is: $(_jq '.id')"
       echo "⚠️ trying to deactivate runner..."
