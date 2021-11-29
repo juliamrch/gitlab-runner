@@ -1,12 +1,12 @@
-#FROM gitlab/gitlab-runner:v13.1.0
-FROM gitlab/gitlab-runner:alpine3.13-v14.5.0
+FROM gitlab/gitlab-runner:v13.1.0
+#FROM gitlab/gitlab-runner:alpine3.13-v14.5.0
 # Doesn't work after v13.0.1
 
 COPY go.sh /
 RUN chmod +x /go.sh
 
 # Install bash
-#RUN apt update && apt install bash
+RUN apt update && apt install bash
 #RUN apk update && apk add bash
 
 # Install nodejs
