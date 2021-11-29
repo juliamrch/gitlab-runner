@@ -1,5 +1,5 @@
 #FROM gitlab/gitlab-runner:v13.1.0
-FROM gitlab/gitlab-runner:latest
+FROM gitlab/gitlab-runner:alpine3.13-v14.5.0
 # Doesn't work after v13.0.1
 
 COPY go.sh /
