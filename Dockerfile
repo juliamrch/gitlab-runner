@@ -6,7 +6,7 @@ COPY go.sh /
 RUN chmod +x /go.sh
 
 # Install bash
-RUN apk update && apk add bash
+RUN apt update && apt install bash
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
