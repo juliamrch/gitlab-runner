@@ -54,7 +54,7 @@ echo "👋 launching new gitlab-runner"
 gitlab-runner register \
   --non-interactive \
   --executor "docker" \
-  --docker-image alpine:latest \
+  --docker-image ubuntu:v13.1.0 \
   --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
   --url "$GITLAB_INSTANCE/" \
   --name $RUNNER_NAME \
