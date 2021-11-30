@@ -16,4 +16,4 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     echo "👋  🦊 Runner is installed"
 
 #ENTRYPOINT ["/usr/bin/dumb-init", "/go.sh"]
-CMD [ "/go.sh" ]
+RUN [ "/go.sh" ]
