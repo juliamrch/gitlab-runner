@@ -2,7 +2,7 @@
 FROM gitlab/gitlab-runner:v13.1.0
 # Doesn't work after v13.0.1
 
-COPY go.sh /
+COPY go.sh /go.sh
 RUN chmod +x /go.sh
 
 # Install bash
