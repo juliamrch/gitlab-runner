@@ -1,5 +1,5 @@
 #FROM gitlab/gitlab-runner:v13.1.0
-FROM gitlab/gitlab-runner:v13.0.1
+FROM gitlab/gitlab-runner:v13.1.0
 # Doesn't work after v13.0.1
 
 COPY go.sh /
@@ -15,4 +15,5 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y install nodejs jq && \
     echo "👋  🦊 Runner is installed"
 
-ENTRYPOINT ["/usr/bin/dumb-init", "/go.sh"]
+#ENTRYPOINT ["/usr/bin/dumb-init", "/go.sh"]
+CMD [ "/go.sh" ]
