@@ -15,5 +15,5 @@ RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y install nodejs jq && \
     echo "👋  🦊 Runner is installed"
 
-#ENTRYPOINT ["/usr/bin/dumb-init", "/go.sh"]
-RUN [ "/go.sh" ]
+ENTRYPOINT ["/usr/bin/dumb-init", "/go.sh"]
+#RUN [ "/go.sh" ]
