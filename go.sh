@@ -67,7 +67,7 @@ echo "👋 launching new gitlab-runner"
 
 #sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
 
-itlab-runner register --non-interactive \
+gitlab-runner register --non-interactive \
   --url $GITLAB_INSTANCE \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
