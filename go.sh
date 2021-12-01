@@ -80,7 +80,7 @@ gitlab-runner register --non-interactive \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
 #  --executor shell
-  --executor docker \
+  --executor "docker" \
   --docker-image ubuntu:latest \
   --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 
