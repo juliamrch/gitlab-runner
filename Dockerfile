@@ -13,6 +13,7 @@ RUN apt update && apt install bash
 RUN curl -sL https://deb.nodesource.com/setup_current.x | bash  && \
     apt-get -y update && \
     apt-get -y install nodejs jq && \
+    apt-get -y install rustc && \
     echo "👋  🦊 Runner is installed"
 
 ENTRYPOINT ["/usr/bin/dumb-init", "/go.sh"]

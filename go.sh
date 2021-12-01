@@ -31,8 +31,17 @@ fi
 
 
 # Get the id of old runners (if exists)
+echo "uno"
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
 
+
+echo "dos"
+echo $(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
+
+echo "tres"
+curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners"
+
+echo "quatre"
 echo "Handle old runners..."
 echo "${json}"
 
@@ -73,9 +82,10 @@ gitlab-runner register --non-interactive \
   --url $GITLAB_INSTANCE \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
-  --executor docker \
-  --docker-image ubuntu:latest \
-  --docker-volumes /var/run/docker.sock:/var/run/docker.sock 
+  --executor shell
+#  --executor docker \
+#  --docker-image ubuntu:latest \
+#  --docker-volumes /var/run/docker.sock:/var/run/docker.sock 
 
 
 
