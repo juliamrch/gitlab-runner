@@ -1,5 +1,8 @@
 #!/bin/sh
 
+#/bin/sh
+#/bin/bash
+
 ######
 # From https://gitlab.com/gitlab-org/gitlab-runner/-/blob/main/dockerfiles/runner/ubuntu/entrypoint
 ######
@@ -48,20 +51,29 @@ done
 # Register, then run the new runner
 echo "👋 launching new gitlab-runner"
 
-gitlab-runner register \
-  --non-interactive \
-  --executor "docker" \
-  --docker-image ubuntu:v13.1.0 \
-  --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
-  --url "$GITLAB_INSTANCE/" \
-  --name $RUNNER_NAME \
-  --registration-token $REGISTRATION_TOKEN \
-  --tag-list "docker" \
-  --run-untagged="true" \
-  --locked="false" \
-  --access-level="not_protected"
+
+#gitlab-runner register \
+#  --non-interactive \
+#  --executor "docker" \
+#  --docker-image ubuntu:v13.1.0 \
+#  --docker-volumes /var/run/docker.sock:/var/run/docker.sock \
+#  --url "$GITLAB_INSTANCE/" \
+#  --name $RUNNER_NAME \
+#  --registration-token $REGISTRATION_TOKEN \
+#  --tag-list "docker" \
+#  --run-untagged="true" \
+#  --locked="false" \
+#  --access-level="not_protected"
 
 #sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
+
+itlab-runner register --non-interactive \
+  --url $GITLAB_INSTANCE \
+  --name $RUNNER_NAME \
+  --registration-token $REGISTRATION_TOKEN \
+  --executor shell
+
+
 
 cat /etc/gitlab-runner/config.toml
 
