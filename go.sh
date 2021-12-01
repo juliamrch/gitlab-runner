@@ -34,7 +34,7 @@ fi
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
 
 echo "Handle old runners..."
-echo $json
+echo "${json}"
 
 for row in $(echo "${json}" | jq -r '.[] | @base64'); do
     echo "$row";
@@ -73,7 +73,9 @@ gitlab-runner register --non-interactive \
   --url $GITLAB_INSTANCE \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
-  --executor docker
+  --executor docker \
+  --docker-image ubuntu:latest \
+  --docker-volumes /var/run/docker.sock:/var/run/docker.sock 
 
 
 
