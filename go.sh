@@ -34,12 +34,9 @@ fi
 echo "uno"
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
 
+curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners" >> json
 
-echo "dos"
-echo $(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
-
-echo "tres"
-curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners"
+cat json
 
 echo "quatre"
 echo "Handle old runners..."
@@ -82,9 +79,9 @@ gitlab-runner register --non-interactive \
   --url $GITLAB_INSTANCE \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
-  --executor shell
-#  --executor docker \
-#  --docker-image ubuntu:latest \
+#  --executor shell
+  --executor docker \
+  --docker-image ubuntu:latest
 #  --docker-volumes /var/run/docker.sock:/var/run/docker.sock 
 
 
